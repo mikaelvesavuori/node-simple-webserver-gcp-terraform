@@ -40,17 +40,17 @@ variable "subnet_name" {
 variable "instance_machinetype_prod" {
   description = "Instance machine type (PROD)"
   type        = string
-  default     = "f1-micro" # n2-standard-16
+  default     = "n2-standard-16"
 }
 
 variable "instance_machinetype_test" {
   description = "Instance machine type (TEST)"
   type        = string
-  default     = "f1-micro" # n2-standard-2
+  default     = "n2-standard-2"
 }
 
 variable "instance_machinetype_dev" {
   description = "Instance machine type (DEV)"
   type        = string
-  default     = "f1-micro" # n2-standard-2
+  default     = "n2-standard-2"
 }
