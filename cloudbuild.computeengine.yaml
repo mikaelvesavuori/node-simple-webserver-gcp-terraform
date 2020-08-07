@@ -1,0 +1,30 @@
+steps:
+  - name: "gcr.io/cloud-builders/npm:node-10.10.0"
+    id: Install
+    args:
+      - "install"
+    dir: "src"
+  - name: "gcr.io/cloud-builders/npm:node-10.10.0"
+    id: Test
+    args:
+      - "test"
+    dir: "src"
+  - name: "gcr.io/cloud-builders/docker"
+    id: Build
+    args:
+      ["build", "-t", "gcr.io/$_PROJECT/$_REPO-$_ENV", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    id: Push
+    args: ["push", "gcr.io/$_PROJECT/$_REPO-$_ENV"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    id: Rollout
+    args:
+      [
+        "beta",
+        "compute",
+        "instances",
+        "update-container",
+        "$_INSTANCE",
+        "--zone=$_ZONE",
+      ]
+images: ["gcr.io/$_PROJECT/$_REPO-$_ENV"]

@@ -1,0 +1,27 @@
+{
+  "name": "node-simple-webserver",
+  "version": "1.0.4",
+  "description": "Simple Node.js server running Fastify",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikaelvesavuori/node-simple-webserver.git"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo 'Do some testing here'"
+  },
+  "keywords": [
+    "webserver",
+    "node server",
+    "fastify server",
+    "example server",
+    "serverless webserver",
+    "serverless server"
+  ],
+  "author": "Mikael Vesavuori",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.1.1"
+  }
+}
