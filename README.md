@@ -46,6 +46,25 @@ Expect that some duplication exists, and that I've not had time and possibility 
 2. Turn on billing for the project in the Billing page
 3. The simplest (manual) way to create credentials, is to create a service account in the IAM page of GCP, then put the generated JSON file at the root of your drive (should be `~./.gcloud/` on Mac/Linux)
 
+[For a programmatic approach you could do like Grant Timmerman shows in his Gist](https://gist.github.com/grant/b19e63aa330c351e66df285e363dc83b#file-sa-sh):
+
+```
+# Get the current project
+PROJECT=$(gcloud config get-value core/project 2> /dev/null)
+
+# Create a service account (aka robot account)
+gcloud iam service-accounts create sa-name \
+  --description="sa-description" \
+  --display-name="sa-display-name"
+
+# Create and download credentials for the service account
+gcloud iam service-accounts keys create creds.json \
+  --iam-account sa-name@$PROJECT.iam.gserviceaccount.com
+
+# Copy service account email
+echo "sa-name@$PROJECT.iam.gserviceaccount.com" | pbcopy
+```
+
 ### 2. Terraform
 
 1. Navigate to `/infra`
