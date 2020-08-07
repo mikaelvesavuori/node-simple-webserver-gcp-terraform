@@ -6,9 +6,9 @@ This is an implementation of my [`node-simple-webserver`](https://github.com/mik
 
 The setup will create:
 
-- **3 (envs) x 1 Compute Engine instances**, each pointing to a env'ed container image of the application supplied in this repo; logging and monitoring is enabled
-- **1 x Cloud Source Repository** for contain your code
-- **3 x Cloud Build triggers**, one per branch/env: dev, test, master (PROD); updates will rollout new container build which will then proceed to update the instance for that environment (yes, there will be downtime)
+- **3 (envs) x 1 Compute Engine instances**, each pointing to an env'ed container image of the application supplied in this repo; logging and monitoring is enabled
+- **1 x Cloud Source Repository** that will contain your code (Git repo)
+- **3 x Cloud Build triggers**, one per branch/env: dev, test, master (PROD); updates will rollout new container build which will then proceed to update the instance for that environment (yes, there will be downtime using Compute Engine with this approach)
 - **3 x Cloud Storage buckets** with life cycle policies (PROD: retain for 3 years, put in Coldline after 1 year; TEST: retain for 7 days; DEV: retain for 1 day)
 - **3 x VPC networks** with one custom subnet per network; PROD is open to public, and TEST and DEV are locked to an IP range of your choosing
 
@@ -31,8 +31,8 @@ Expect that some duplication exists, and that I've not had time and possibility 
 - `/src`: Node webserver
 - `app.yaml`: App Engine configuration
 - `cloudbuild.sh`: Cloud Build manifests for CI/CD with substitutions for three environments (DEV, TEST, PROD) when using Compute Engine
-- `cloudbuild.appengine.sh`: Cloud Build manifests for CI/CD with substitutions for three environments (DEV, TEST, PROD) when using App Engine (NB. Not used with Terraform! Provided as a reference example)
-- `cloudbuild.run.sh`: Cloud Build manifests for CI/CD with substitutions for three environments (DEV, TEST, PROD) when using Cloud Run (NB. Not used with Terraform! Provided as a reference example)
+- `cloudbuild.appengine.sh`: Cloud Build manifests for CI/CD with substitutions for three environments (DEV, TEST, PROD) when using App Engine
+- `cloudbuild.run.sh`: Cloud Build manifests for CI/CD with substitutions for three environments (DEV, TEST, PROD) when using Cloud Run
 - `deploy-gae.sh`: Quick helper script to deploy and build the Docker file of the app to App Engine
 - `Dockerfile`: Packages up your app the right way, exposes port 443 (HTTPS) publicly
 - `setup.sh`: Creates a GCP project for you
@@ -44,12 +44,12 @@ Expect that some duplication exists, and that I've not had time and possibility 
 
 1. **Create new project**: Open `setup.sh` and modify to cover your own case, then run it (the last steps may fail if billing is not turned on)
 2. Turn on billing for the project in the Billing page
-3. Create a service account, put JSON file at the root of your drive; should be `~./.gcloud/`
+3. The simplest (manual) way to create credentials, is to create a service account in the IAM page of GCP, then put the generated JSON file at the root of your drive (should be `~./.gcloud/` on Mac/Linux)
 
 ### 2. Terraform
 
 1. Navigate to `/infra`
-2. Set your own variable in **a)** `/infra/variables.tf` and **b)** `/infra/main.tf` (under "credentials", point to the JSON file you just got) and finally set **c)** "server_image_name_base" in `/infra/vars.compute.tf` to include your project ID
+2. Input your own variables/settings in **a)** `/infra/variables.tf` and **b)** `/infra/main.tf` (under "credentials", point to the JSON file you just got) and finally set **c)** "server_image_name_base" in `/infra/vars.compute.tf` to include your project ID
 3. Run `terraform init`
 4. Run `terraform validate`
 5. Run `terraform plan`
@@ -65,7 +65,7 @@ You will get "ephemeral IPs" that will change when the machine restarts (etc). G
 
 Easy. Just change the default value in "cloudbuild_filename" (`/infra/vars.cloudbuild.tf`) to the respective platform's configuration file name.
 
-Obviously, if you're not using the virtual machines you probably want to make sure they don't get created, in case you're not using Compute Engine.
+Obviously, if you're not using the virtual machines you probably want to make sure they don't get created, in case you're using something other than Compute Engine.
 
 ## How to run the application
 
