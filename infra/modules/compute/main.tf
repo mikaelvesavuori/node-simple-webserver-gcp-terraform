@@ -1,3 +1,4 @@
+# Containers
 module "gce_container_prod" {
   source  = "terraform-google-modules/container-vm/google"
   version = "~> 2.0"
@@ -37,6 +38,7 @@ module "gce_container_dev" {
   restart_policy = "Always"
 }
 
+# Instance templates
 resource "google_compute_instance_template" "default" {
   name         = "server-template"
   description  = "Template for machine"
@@ -70,6 +72,7 @@ resource "google_compute_instance_template" "default" {
 
   # Reference: https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes
   service_account {
+    email = "SERVICE_ACCOUNT_EMAIL", // TODO
     scopes = [
       "https://www.googleapis.com/auth/servicecontrol",
       "https://www.googleapis.com/auth/service.management.readonly",
@@ -82,7 +85,13 @@ resource "google_compute_instance_template" "default" {
   }
 }
 
+# Actual instances
 resource "google_compute_instance_from_template" "instance-prod" {
+  depends_on = [
+    google_compute_network.network_prod,
+    google_compute_subnetwork.subnet_prod
+  ]
+
   name                     = format("%s-%s", var.instance_name, var.env_prod)
   zone                     = var.zone
   source_instance_template = google_compute_instance_template.default.id
@@ -109,6 +118,11 @@ resource "google_compute_instance_from_template" "instance-prod" {
 }
 
 resource "google_compute_instance_from_template" "instance-test" {
+  depends_on = [
+    google_compute_network.network_test,
+    google_compute_subnetwork.subnet_test
+  ]
+
   name                     = format("%s-%s", var.instance_name, var.env_test)
   zone                     = var.zone
   source_instance_template = google_compute_instance_template.default.id
@@ -135,6 +149,11 @@ resource "google_compute_instance_from_template" "instance-test" {
 }
 
 resource "google_compute_instance_from_template" "instance-dev" {
+  depends_on = [
+    google_compute_network.network_dev,
+    google_compute_subnetwork.subnet_dev
+  ]
+
   name                     = format("%s-%s", var.instance_name, var.env_dev)
   zone                     = var.zone
   source_instance_template = google_compute_instance_template.default.id

@@ -5,6 +5,11 @@ variable "project" {
   default     = "YOUR_PROJECT_ID"
 }
 
+variable "gcp_service_list" {
+  description = "List of GCP service to be enabled for a project."
+  type        = list
+}
+
 # EDIT THESE IF YOU WANT
 variable "region" {
   description = "GCP region. Default is 'europe-west1' (Belgium)"
