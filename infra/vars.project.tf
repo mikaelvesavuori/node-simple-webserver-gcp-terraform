@@ -23,6 +23,21 @@ variable "service_name" {
   type        = string
 }
 
+variable "name" {
+  description = "Project name"
+  type        = string
+}
+
+variable "project_id" {
+  description = "Project ID"
+  type        = string
+}
+
+variable "billing_account_name" {
+  description = "Name/ID of billing account"
+  type        = string
+}
+
 variable "env_prod" {
   description = "Environment (PROD)"
   type        = string

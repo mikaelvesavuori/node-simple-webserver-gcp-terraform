@@ -1,6 +1,6 @@
 resource "google_storage_bucket" "storage_prod" {
-  name          = "storage_webserver-bgjmrr34" # TODO: variable
-  location      = "EU"                         # TODO: variable
+  name          = var.storage_name_prod
+  location      = var.location
   force_destroy = true
 
   lifecycle_rule {
@@ -24,8 +24,8 @@ resource "google_storage_bucket" "storage_prod" {
 }
 
 resource "google_storage_bucket" "storage_test" {
-  name          = "storage_webserver-cdsviou4" # TODO: variable
-  location      = "EU"                         # TODO: variable
+  name          = var.storage_name_test
+  location      = var.location
   force_destroy = true
 
   lifecycle_rule {
@@ -39,8 +39,8 @@ resource "google_storage_bucket" "storage_test" {
 }
 
 resource "google_storage_bucket" "storage_dev" {
-  name          = "storage_webserver-klskl4hj" # TODO: variable
-  location      = "EU"                         # TODO: variable
+  name          = var.storage_name_dev
+  location      = var.location
   force_destroy = true
 
   lifecycle_rule {

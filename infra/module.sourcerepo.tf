@@ -1,5 +1,5 @@
 module "sourcerepo" {
   source = "./modules/sourcerepo/"
 
-  name = var.sourcerepo_name
+  sourcerepo_name = var.sourcerepo_name
 }

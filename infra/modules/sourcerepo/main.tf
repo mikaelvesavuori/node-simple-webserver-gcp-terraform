@@ -1,3 +1,3 @@
 resource "google_sourcerepo_repository" "sourcerepo" {
-  name = "webserver"
+  name = var.sourcerepo_name
 }

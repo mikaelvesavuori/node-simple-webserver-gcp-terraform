@@ -1,13 +1,13 @@
 resource "google_project" "project" {
-  name       = "My Project"
-  project_id = "your-project-id"
-  org_id     = "1234567"
+  name       = var.name
+  project_id = var.project_id
+  #org_id     = var.org_id
 
   billing_account = data.google_billing_account.acct.id
 }
 
 data "google_billing_account" "acct" {
-  display_name = "My Billing Account"
+  display_name = var.billing_account_name
   open         = true
 }
 

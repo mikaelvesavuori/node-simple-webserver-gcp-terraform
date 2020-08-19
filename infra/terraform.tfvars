@@ -6,6 +6,10 @@ project = "YOUR_PROJECT_ID"
 region = "europe-west1"
 zone= "europe-west1-b"
 
+name = "My Project"
+project_id = "my-project"
+billing_account_name = "my-billing-account"
+
 service_name = "nodesimplewebserver"
 
 env_prod = "prod"
@@ -104,3 +108,7 @@ sourcerepo_name = "webserver"
 
 bucket_name = "EU"
 bucket_location = "storage_webserver-2kl34jd"
+
+subnet_name_prod = "storage_webserver-bgjmrr34"
+subnet_name_prod = "storage_webserver-cdsviou4"
+subnet_name_prod = "storage_webserver-klskl4hj"
