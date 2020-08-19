@@ -89,8 +89,7 @@ resource "google_compute_instance_template" "default" {
 # Actual instances
 resource "google_compute_instance_from_template" "instance-prod" {
   depends_on = [
-    google_compute_network.network_prod,
-    google_compute_subnetwork.subnet_prod
+    var.network_prod
   ]
 
   name                     = format("%s-%s", var.instance_name, var.env_prod)
@@ -120,8 +119,7 @@ resource "google_compute_instance_from_template" "instance-prod" {
 
 resource "google_compute_instance_from_template" "instance-test" {
   depends_on = [
-    google_compute_network.network_test,
-    google_compute_subnetwork.subnet_test
+    var.network_test
   ]
 
   name                     = format("%s-%s", var.instance_name, var.env_test)
@@ -151,8 +149,7 @@ resource "google_compute_instance_from_template" "instance-test" {
 
 resource "google_compute_instance_from_template" "instance-dev" {
   depends_on = [
-    google_compute_network.network_dev,
-    google_compute_subnetwork.subnet_dev
+    var.network_dev
   ]
 
   name                     = format("%s-%s", var.instance_name, var.env_dev)

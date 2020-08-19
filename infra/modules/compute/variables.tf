@@ -77,3 +77,19 @@ variable "subnet_name" {
   description = "Subnet name (env will be added dynamically to the end)"
   type        = string
 }
+
+# Inputs
+variable "network_prod" {
+  description = "Production network input"
+  type        = string
+}
+
+variable "network_test" {
+  description = "TEST network input"
+  type        = string
+}
+
+variable "network_dev" {
+  description = "DEV network input"
+  type        = string
+}

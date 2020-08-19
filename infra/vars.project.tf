@@ -31,7 +31,6 @@ variable "env_prod" {
 variable "env_test" {
   description = "Environment (TEST)"
   type        = string
-  #default     = env_test
 }
 
 variable "env_dev" {

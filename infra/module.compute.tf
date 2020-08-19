@@ -20,4 +20,8 @@ module "compute" {
   instance_machinetype_prod = var.instance_machinetype_prod
   instance_machinetype_test = var.instance_machinetype_test
   instance_machinetype_dev  = var.instance_machinetype_dev
+
+  network_prod = module.network.network_prod_output
+  network_test = module.network.network_test_output
+  network_dev  = module.network.network_dev_output
 }
