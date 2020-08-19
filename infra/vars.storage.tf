@@ -8,6 +8,21 @@ variable "bucket_location" {
   type        = string
 }
 
+variable "max_age_prod" {
+  description = "Max age in days (PROD)"
+  type        = string
+}
+
+variable "max_age_test" {
+  description = "Max age in days (TEST)"
+  type        = string
+}
+
+variable "max_age_dev" {
+  description = "Max age in days (DEV)"
+  type        = string
+}
+
 variable "storage_name_prod" {
   description = "Storage name (PROD)"
   type        = string

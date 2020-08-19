@@ -23,7 +23,22 @@ variable "gcp_service_list" {
   type        = list
 }
 
-variable "billing_account_name" {
+variable "billing_account_id" {
   description = "Name/ID of billing account"
+  type        = string
+}
+
+variable "service_account_compute_prod" {
+  description = "Service account for Compute Engine (PROD)"
+  type        = string
+}
+
+variable "service_account_compute_test" {
+  description = "Service account for Compute Engine (TEST)"
+  type        = string
+}
+
+variable "service_account_compute_dev" {
+  description = "Service account for Compute Engine (DEV)"
   type        = string
 }

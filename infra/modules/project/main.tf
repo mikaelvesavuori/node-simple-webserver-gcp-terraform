@@ -1,14 +1,14 @@
+data "google_billing_account" "billing_account" {
+  display_name = var.billing_account_id
+  open         = true
+}
+
 resource "google_project" "project" {
   name       = var.name
   project_id = var.project_id
   #org_id     = var.org_id
 
-  billing_account = data.google_billing_account.acct.id
-}
-
-data "google_billing_account" "acct" {
-  display_name = var.billing_account_name
-  open         = true
+  billing_account = data.google_billing_account.billing_account.id
 }
 
 # Project APIs

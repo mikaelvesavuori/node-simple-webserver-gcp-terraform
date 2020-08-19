@@ -24,4 +24,8 @@ module "compute" {
   network_prod = module.network.network_prod_output
   network_test = module.network.network_test_output
   network_dev  = module.network.network_dev_output
+
+  service_account_compute_prod = var.service_account_compute_prod
+  service_account_compute_dev  = var.service_account_compute_dev
+  service_account_compute_test = var.service_account_compute_test
 }

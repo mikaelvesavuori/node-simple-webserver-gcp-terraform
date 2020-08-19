@@ -8,9 +8,13 @@ zone= "europe-west1-b"
 
 name = "My Project"
 project_id = "my-project"
-billing_account_name = "my-billing-account"
+billing_account_id = "my-billing-account"
 
 service_name = "nodesimplewebserver"
+
+service_account_compute_prod = "service_account_compute_prod"
+service_account_compute_test = "service_account_compute_test"
+service_account_compute_dev = "service_account_compute_dev"
 
 env_prod = "prod"
 env_test = "test"
@@ -73,6 +77,8 @@ instance_machinetype_dev = "n2-standard-2"
 #    Networking    #
 ####################
 
+tcp_ports = ["80", "443"]
+
 network_name_prod = "network-prod"
 network_name_test  = "network-test"
 network_name_dev = "network-dev"
@@ -84,6 +90,11 @@ subnet_name_dev = "subnet-dev"
 network_firewall_name_prod = "firewall-prod"
 network_firewall_name_test = "firewall-test"
 network_firewall_name_dev = "firewall-dev"
+
+# Target service accounts
+target_service_accounts_prod = [""]
+target_service_accounts_test = [""]
+target_service_accounts_dev = [""]
 
 # IP ranges
 ip_cidr_range_prod = "10.2.0.0/16"
@@ -109,6 +120,10 @@ sourcerepo_name = "webserver"
 bucket_name = "EU"
 bucket_location = "storage_webserver-2kl34jd"
 
-subnet_name_prod = "storage_webserver-bgjmrr34"
-subnet_name_prod = "storage_webserver-cdsviou4"
-subnet_name_prod = "storage_webserver-klskl4hj"
+max_age_prod = "1095"
+max_age_test = "7"
+max_age_dev = "1"
+
+storage_name_prod = "storage_webserver-bgjmrr34"
+storage_name_test = "storage_webserver-cdsviou4"
+storage_name_dev = "storage_webserver-klskl4hj"

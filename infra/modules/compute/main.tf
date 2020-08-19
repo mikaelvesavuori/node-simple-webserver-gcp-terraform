@@ -103,7 +103,7 @@ resource "google_compute_instance_from_template" "instance-prod" {
   }
 
   # Network tags
-  tags = ["http-server", "https-server", "env-prod"]
+  tags = ["env-prod"]
 
   network_interface {
     subnetwork = format("%s-%s", var.subnet_name, var.env_prod)
@@ -133,7 +133,7 @@ resource "google_compute_instance_from_template" "instance-test" {
   }
 
   # Network tags
-  tags = ["http-server", "https-server", "env-test"]
+  tags = ["env-test"]
 
   network_interface {
     subnetwork = format("%s-%s", var.subnet_name, var.env_test)
@@ -163,7 +163,7 @@ resource "google_compute_instance_from_template" "instance-dev" {
   }
 
   # Network tags
-  tags = ["http-server", "https-server", "env-dev"]
+  tags = ["env-dev"]
 
   network_interface {
     subnetwork = format("%s-%s", var.subnet_name, var.env_dev)

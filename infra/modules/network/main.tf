@@ -43,13 +43,17 @@ resource "google_compute_firewall" "firewall_prod" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "443"]
+    ports    = var.tcp_ports
   }
 
   priority = "100"
 
   source_ranges = [var.source_range_prod]
-  source_tags   = ["env-prod"]
+  #source_tags   = ["env-prod"]
+
+  target_tags = ["env-prod"]
+
+  #target_service_accounts = var.target_service_accounts_prod
 }
 
 resource "google_compute_firewall" "firewall_test" {
@@ -58,13 +62,17 @@ resource "google_compute_firewall" "firewall_test" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "443"]
+    ports    = var.tcp_ports
   }
 
   priority = "100"
 
   source_ranges = [var.source_range_test]
-  source_tags   = ["env-test"]
+  #source_tags   = ["env-test"]
+
+  target_tags = ["env-prod"]
+
+  #target_service_accounts = var.target_service_accounts_test
 }
 
 resource "google_compute_firewall" "firewall_dev" {
@@ -73,11 +81,15 @@ resource "google_compute_firewall" "firewall_dev" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "443"]
+    ports    = var.tcp_ports
   }
 
   priority = "100"
 
   source_ranges = [var.source_range_dev]
-  source_tags   = ["env-dev"]
+  #source_tags   = ["env-dev"]
+
+  target_tags = ["env-prod"]
+
+  #target_service_accounts = var.target_service_accounts_dev
 }

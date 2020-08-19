@@ -5,7 +5,7 @@ resource "google_storage_bucket" "storage_prod" {
 
   lifecycle_rule {
     condition {
-      age = "30" # TODO: variable
+      age = var.max_age_prod
     }
     action {
       type          = "SetStorageClass"
@@ -15,7 +15,7 @@ resource "google_storage_bucket" "storage_prod" {
 
   lifecycle_rule {
     condition {
-      age = "1095" # TODO: variable
+      age = var.max_age_prod
     }
     action {
       type = "Delete"
@@ -30,7 +30,7 @@ resource "google_storage_bucket" "storage_test" {
 
   lifecycle_rule {
     condition {
-      age = "7" # TODO: variable
+      age = var.max_age_test
     }
     action {
       type = "Delete"
@@ -45,7 +45,7 @@ resource "google_storage_bucket" "storage_dev" {
 
   lifecycle_rule {
     condition {
-      age = "1" # TODO: variable
+      age = var.max_age_dev
     }
     action {
       type = "Delete"

@@ -8,6 +8,11 @@ variable "region" {
   type        = string
 }
 
+variable "tcp_ports" {
+  description = "TCP ports to open"
+  type        = list
+}
+
 # Names
 variable "network_name_prod" {
   description = "Network name (PROD)"
@@ -85,4 +90,20 @@ variable "source_range_test" {
 variable "source_range_dev" {
   description = "IP source range (DEV)"
   type        = string
+}
+
+# Target service accounts
+variable "target_service_accounts_prod" {
+  description = "Target services accounts in PROD environment"
+  type        = list
+}
+
+variable "target_service_accounts_test" {
+  description = "Target services accounts in TEST environment"
+  type        = list
+}
+
+variable "target_service_accounts_dev" {
+  description = "Target services accounts in DEV environment"
+  type        = list
 }

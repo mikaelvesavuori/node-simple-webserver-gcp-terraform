@@ -13,6 +13,22 @@ variable "service_name" {
   type        = string
 }
 
+# Service accounts
+variable "service_account_compute_prod" {
+  description = "Service account for Compute Engine (PROD)"
+  type        = string
+}
+
+variable "service_account_compute_test" {
+  description = "Service account for Compute Engine (TEST)"
+  type        = string
+}
+
+variable "service_account_compute_dev" {
+  description = "Service account for Compute Engine (DEV)"
+  type        = string
+}
+
 # Envs
 variable "env_prod" {
   description = "Environment (PROD)"
@@ -81,15 +97,15 @@ variable "subnet_name" {
 # Inputs
 variable "network_prod" {
   description = "Production network input"
-  type        = string
+  type        = any
 }
 
 variable "network_test" {
   description = "TEST network input"
-  type        = string
+  type        = any
 }
 
 variable "network_dev" {
   description = "DEV network input"
-  type        = string
+  type        = any
 }

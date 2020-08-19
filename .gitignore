@@ -1,6 +1,9 @@
 ### Node ###
 .serverless
 
+# Terraform
+.terraform
+
 # Reports
 *.report.html
 *.report.csv
