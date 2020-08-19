@@ -1,3 +1,17 @@
+#############
+#  Project  #
+#############
+
+project = "YOUR_PROJECT_ID"
+region = "europe-west1"
+zone= "europe-west1-b"
+
+service_name = "nodesimplewebserver"
+
+env_prod = "prod"
+env_test = "test"
+env_dev = "dev"
+
 gcp_service_list = [
   "cloudapis.googleapis.com",
   "sourcerepo.googleapis.com",
@@ -18,3 +32,75 @@ gcp_service_list = [
 # "servicemanagement.googleapis.com", # Service Management API
 # "serviceusage.googleapis.com",      # Service Usage API
 # "storage-component.googleapis.com", # Cloud Storage
+
+#################
+#  Cloud Build  #
+#################
+
+cloudbuild_repo = "webserver"
+cloudbuild_filename = "cloudbuild.appengine.yaml"
+cloudbuild_trigger_name = "webserver-trigger"
+
+cloudbuild_branch_prod = "master"
+cloudbuild_branch_test = "test"
+cloudbuild_branch_dev = "dev"
+
+####################
+#  Compute Engine  #
+####################
+
+# EDIT THIS TO YOUR VALUES!
+server_image_name_base = "gcr.io/YOUR_PROJECT_ID/YOUR_SERVICE"
+
+# Reference: https://cloud.google.com/container-optimized-os/docs/release-notes
+cos_image_name = "cos-stable-81-12871-1174-0"
+
+disk_size = 10
+disk_type = "pd-ssd"
+instance_name = "webserver-instance"
+subnet_name = "subnet"
+
+instance_machinetype_prod = "n2-standard-16"
+instance_machinetype_test = "n2-standard-2"
+instance_machinetype_dev = "n2-standard-2"
+
+
+####################
+#    Networking    #
+####################
+
+network_name_prod = "network-prod"
+network_name_test  = "network-test"
+network_name_dev = "network-dev"
+
+subnet_name_prod = "subnet-prod"
+subnet_name_test = "subnet-test"
+subnet_name_dev = "subnet-dev"
+
+network_firewall_name_prod = "firewall-prod"
+network_firewall_name_test = "firewall-test"
+network_firewall_name_dev = "firewall-dev"
+
+# IP ranges
+ip_cidr_range_prod = "10.2.0.0/16"
+ip_cidr_range_test = "10.4.0.0/16"
+ip_cidr_range_dev = "10.6.0.0/16"
+
+# Source ranges
+source_range_prod = "0.0.0.0/0"
+source_range_test = "193.234.97.131/32" # Your private IP, to test/simulate this
+source_range_dev = "193.234.97.131/32" # Your private IP, to test/simulate this
+
+
+#############################
+#    Source Repositories    #
+#############################
+
+sourcerepo_name = "webserver"
+
+#######################
+#    Cloud Storage    #
+#######################
+
+bucket_name = "EU"
+bucket_location = "storage_webserver-2kl34jd"

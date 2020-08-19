@@ -11,7 +11,7 @@ data "google_billing_account" "acct" {
   open         = true
 }
 
-resource "google_project" "my_project" {
+resource "google_project" "project" {
   name       = "My Project"
   project_id = "your-project-id"
   org_id     = "1234567"
@@ -21,8 +21,12 @@ resource "google_project" "my_project" {
 
 # Project APIs
 resource "google_project_service" "gcp_services" {
+  depends_on = [
+    google_project.project
+  ]
+
   count   = length(var.gcp_service_list)
-  project = google_project.demo_project.project_id
+  project = google_project.project.project_id
   service = var.gcp_service_list[count.index]
 
   disable_dependent_services = true

@@ -72,7 +72,8 @@ resource "google_compute_instance_template" "default" {
 
   # Reference: https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes
   service_account {
-    email = "SERVICE_ACCOUNT_EMAIL", // TODO
+    email = "SERVICE_ACCOUNT_EMAIL" // TODO
+
     scopes = [
       "https://www.googleapis.com/auth/servicecontrol",
       "https://www.googleapis.com/auth/service.management.readonly",
