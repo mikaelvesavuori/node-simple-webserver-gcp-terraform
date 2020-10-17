@@ -120,6 +120,7 @@ sourcerepo_name = "webserver"
 bucket_name = "EU"
 bucket_location = "storage_webserver-2kl34jd"
 
+max_age_move_to_coldline = "30"
 max_age_prod = "1095"
 max_age_test = "7"
 max_age_dev = "1"

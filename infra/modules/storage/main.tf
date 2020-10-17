@@ -5,7 +5,7 @@ resource "google_storage_bucket" "storage_prod" {
 
   lifecycle_rule {
     condition {
-      age = var.max_age_prod
+      age = var.max_age_move_to_coldline
     }
     action {
       type          = "SetStorageClass"

@@ -8,6 +8,11 @@ variable "location" {
   type        = string
 }
 
+variable "max_age_move_to_coldline" {
+  description = "Max age before moving data to Coldline storage"
+  type        = string
+}
+
 variable "max_age_prod" {
   description = "Max age in days (PROD)"
   type        = string
