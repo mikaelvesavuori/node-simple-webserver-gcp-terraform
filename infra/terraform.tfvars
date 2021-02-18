@@ -21,6 +21,7 @@ env_test = "test"
 env_dev = "dev"
 
 gcp_service_list = [
+  "iamcredentials.googleapis.com",
   "cloudapis.googleapis.com",
   "sourcerepo.googleapis.com",
   "compute.googleapis.com",
@@ -57,11 +58,11 @@ cloudbuild_branch_dev = "dev"
 #  Compute Engine  #
 ####################
 
-# EDIT THIS TO YOUR VALUES!
+# EDIT THIS TO YOUR VALUE!
 server_image_name_base = "gcr.io/YOUR_PROJECT_ID/YOUR_SERVICE"
 
 # Reference: https://cloud.google.com/container-optimized-os/docs/release-notes
-cos_image_name = "cos-stable-81-12871-1174-0"
+cos_image_name = "cos-stable-85-13310-1041-17"
 
 disk_size = 10
 disk_type = "pd-ssd"

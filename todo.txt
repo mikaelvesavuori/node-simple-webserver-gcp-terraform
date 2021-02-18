@@ -1,0 +1,9 @@
+Security
+* A custom service account should have been created with logging and monitoring roles on project level and storage read on gcr bucket.
+    * There are also scopes for endpoints that you are not using
+* Both source range and source tags are used for firewalls. If you would have used target tags instead of source tags you would not have needed to use the http and https tags.
+* Usage of tags must be planned,  if a custom service account was used instead default you could have created a firewall with target service account
+
+Ops
+* Container is not tagged/versioned
+* Updating app should use the tag
